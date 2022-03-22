@@ -1,0 +1,14 @@
+name: easy_prefs
+description: easy-to-use shared_preferences
+version: 0.0.1
+repository: https://github.com/mergehez/flutter_easy_prefs
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+
+flutter:
