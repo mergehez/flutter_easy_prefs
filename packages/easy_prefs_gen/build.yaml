@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      easy_prefs_gen:
+        enabled: true
+        
+builders:
+  prefsGenerator:
+    import: "package:easy_prefs_gen/generator_registration.dart"
+    builder_factories: ["prefsGeneratorBuilder"]
+    build_extensions: {".dart": ["prefs.g.part"]} # prefs is part_id, must be passed to SharedPartBuilder(... , "prefs") in generator_registration.dart
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
