@@ -1,0 +1,1 @@
+Example project using easy_prefs and easy_prefs_gen
