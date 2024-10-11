@@ -199,17 +199,22 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
 
     final prefHelper = onlyModifier ? "_\$$name ?? " : "";
     final suffHelper = onlyModifier ? ", (_) => _\$$name = val" : "";
+    final nameFirstUpperCase = name[0].toUpperCase() + name.substring(1);
+
+    final setterName = "set${nameFirstUpperCase}Async";
 
     if (field.isEnum) {
       strBuffer.writeln(
           '$type get $name => $prefHelper _helper.getEnum(_keys.$name, $type.values, $valueStr);');
       strBuffer.writeln(
-          'set $name($type val) => _helper.setInt(_keys.$name, val.index $suffHelper);');
+          '$setterName($type val) => _helper.setInt(_keys.$name, val.index $suffHelper);');
+      strBuffer.writeln('set $name($type val) => $setterName();');
     } else {
       strBuffer.writeln(
           '$type get $name => $prefHelper _helper.get$typeFirstUpperCase(_keys.$name, $valueStr);');
       strBuffer.writeln(
-          'set $name($type val) => _helper.set$typeFirstUpperCase(_keys.$name, val $suffHelper);');
+          '$setterName($type val) => _helper.set$typeFirstUpperCase(_keys.$name, val $suffHelper);');
+      strBuffer.writeln('set $name($type val) => $setterName();');
       if (type == "bool" && toggleMethodForBoolValues) {
         final nameFirstUpperCase = name[0].toUpperCase() + name.substring(1);
         final suffHelper2 = suffHelper.replaceFirst("(_)", "(val)");
