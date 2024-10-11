@@ -17,3 +17,7 @@
 ## 0.0.5
 
 - No significant change
+
+## 0.0.6
+
+- Added async setter methods
