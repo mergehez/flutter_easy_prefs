@@ -35,37 +35,54 @@ class _$Settings with IEasyPrefs, ChangeNotifier {
 
   String? _$username;
   String get username => _$username ?? _helper.getString(_keys.username, '');
-  set username(String val) => _helper.setString(_keys.username, val, (_) => _$username = val);
+  set username(String val) =>
+      _helper.setString(_keys.username, val, (_) => _$username = val);
 
   bool? _$notification;
-  bool get notification => _$notification ?? _helper.getBool(_keys.notification, true);
-  set notification(bool val) => _helper.setBool(_keys.notification, val, (_) => _$notification = val);
-  bool toggleNotification() => _helper.toggleBool(_keys.notification, true, (val) => _$notification = val);
+  bool get notification =>
+      _$notification ?? _helper.getBool(_keys.notification, true);
+  set notification(bool val) =>
+      _helper.setBool(_keys.notification, val, (_) => _$notification = val);
+  bool toggleNotification() => _helper.toggleBool(
+      _keys.notification, true, (val) => _$notification = val);
 
   bool? _$notificationSound;
-  bool get notificationSound => _$notificationSound ?? _helper.getBool(_keys.notificationSound, true);
-  set notificationSound(bool val) => _helper.setBool(_keys.notificationSound, val, (_) => _$notificationSound = val);
-  bool toggleNotificationSound() => _helper.toggleBool(_keys.notificationSound, true, (val) => _$notificationSound = val);
+  bool get notificationSound =>
+      _$notificationSound ?? _helper.getBool(_keys.notificationSound, true);
+  set notificationSound(bool val) => _helper.setBool(
+      _keys.notificationSound, val, (_) => _$notificationSound = val);
+  bool toggleNotificationSound() => _helper.toggleBool(
+      _keys.notificationSound, true, (val) => _$notificationSound = val);
 
   double? _$exchangeRate;
-  double get exchangeRate => _$exchangeRate ?? _helper.getDouble(_keys.exchangeRate, 1.1);
-  set exchangeRate(double val) => _helper.setDouble(_keys.exchangeRate, val, (_) => _$exchangeRate = val);
+  double get exchangeRate =>
+      _$exchangeRate ?? _helper.getDouble(_keys.exchangeRate, 1.1);
+  set exchangeRate(double val) =>
+      _helper.setDouble(_keys.exchangeRate, val, (_) => _$exchangeRate = val);
 
   LanguageCodes? _$language;
-  LanguageCodes get language => _$language ?? _helper.getEnum(_keys.language, LanguageCodes.values, LanguageCodes.kmr);
-  set language(LanguageCodes val) => _helper.setInt(_keys.language, val.index, (_) => _$language = val);
+  LanguageCodes get language =>
+      _$language ??
+      _helper.getEnum(_keys.language, LanguageCodes.values, LanguageCodes.kmr);
+  set language(LanguageCodes val) =>
+      _helper.setInt(_keys.language, val.index, (_) => _$language = val);
 
   int? _$likeCount;
   int get likeCount => _$likeCount ?? _helper.getInt(_keys.likeCount, 0);
-  set likeCount(int val) => _helper.setInt(_keys.likeCount, val, (_) => _$likeCount = val);
+  set likeCount(int val) =>
+      _helper.setInt(_keys.likeCount, val, (_) => _$likeCount = val);
 
   NotifiableStringList? _$favs;
-  NotifiableStringList get favs => _$favs ?? _helper.getStringList(_keys.favs, ['asf', 'afsaf']);
-  set favs(NotifiableStringList val) => _helper.setStringList(_keys.favs, val, (_) => _$favs = val);
+  NotifiableStringList get favs =>
+      _$favs ?? _helper.getStringList(_keys.favs, ['asf', 'afsaf']);
+  set favs(NotifiableStringList val) =>
+      _helper.setStringList(_keys.favs, val, (_) => _$favs = val);
 
   NotifiableStringList? _$favs2;
-  NotifiableStringList get favs2 => _$favs2 ?? _helper.getStringList(_keys.favs2, ['asf', 'afsaf']);
-  set favs2(NotifiableStringList val) => _helper.setStringList(_keys.favs2, val, (_) => _$favs2 = val);
+  NotifiableStringList get favs2 =>
+      _$favs2 ?? _helper.getStringList(_keys.favs2, ['asf', 'afsaf']);
+  set favs2(NotifiableStringList val) =>
+      _helper.setStringList(_keys.favs2, val, (_) => _$favs2 = val);
 
   @override
   void initializeAll() {

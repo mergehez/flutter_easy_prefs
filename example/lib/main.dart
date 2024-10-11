@@ -11,7 +11,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +31,13 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final settings = context.watchSettings();
-    final lastValInFavList = int.parse(settings.favs.isNotEmpty ? settings.favs.last : "0");
+    final lastValInFavList =
+        int.parse(settings.favs.isNotEmpty ? settings.favs.last : "0");
     return Scaffold(
       appBar: AppBar(
         title: const Text("EasyPrefs Demo"),
@@ -64,8 +65,9 @@ class MyHomePage extends StatelessWidget {
                   value: settings.language,
                   items: LanguageCodes.values
                       .map((e) => DropdownMenuItem(
-                            child: Text(e.name, textScaleFactor: 1.2),
                             value: e,
+                            child: Text(e.name,
+                                textScaler: TextScaler.linear(1.2)),
                           ))
                       .toList(),
                   onChanged: (LanguageCodes? lang) {
@@ -80,12 +82,18 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(16.0),
-                    child: Text("View Count: ", textScaleFactor: 1.2),
+                    child: Text("View Count: ",
+                        textScaler: TextScaler.linear(1.2)),
                   ),
                   const Spacer(),
-                  IconButton(onPressed: () => settings.likeCount--, icon: const Icon(Icons.remove)),
-                  Text(settings.likeCount.toString(), textScaleFactor: 1.2),
-                  IconButton(onPressed: () => settings.likeCount++, icon: const Icon(Icons.add)),
+                  IconButton(
+                      onPressed: () => settings.likeCount--,
+                      icon: const Icon(Icons.remove)),
+                  Text(settings.likeCount.toString(),
+                      textScaler: TextScaler.linear(1.2)),
+                  IconButton(
+                      onPressed: () => settings.likeCount++,
+                      icon: const Icon(Icons.add)),
                 ],
               ),
               const Divider(height: 1),
@@ -93,18 +101,25 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(16.0),
-                    child: Text("Fav Items: ", textScaleFactor: 1.2),
+                    child:
+                        Text("Fav Items: ", textScaler: TextScaler.linear(1.2)),
                   ),
                   const Spacer(),
-                  ElevatedButton(onPressed: () => settings.favs.removeLast(), child: const Icon(Icons.remove)),
+                  ElevatedButton(
+                      onPressed: () => settings.favs.removeLast(),
+                      child: const Icon(Icons.remove)),
                   const SizedBox(width: 5),
-                  ElevatedButton(onPressed: () => settings.favs.add("${lastValInFavList + 1}"), child: const Icon(Icons.add)),
+                  ElevatedButton(
+                      onPressed: () =>
+                          settings.favs.add("${lastValInFavList + 1}"),
+                      child: const Icon(Icons.add)),
                 ],
               ),
               const Divider(height: 20),
               const Padding(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: Text("settings.toString() :", textScaleFactor: 1.1),
+                child: Text("settings.toString() :",
+                    textScaler: TextScaler.linear(1.1)),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),

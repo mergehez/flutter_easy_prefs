@@ -114,7 +114,8 @@ class NotifiableStringList implements List<String> {
   }
 
   @override
-  void setRange(int start, int end, Iterable<String> iterable, [int skipCount = 0]) {
+  void setRange(int start, int end, Iterable<String> iterable,
+      [int skipCount = 0]) {
     _values.setRange(start, end, iterable, skipCount);
     _notifyListener();
   }
@@ -135,7 +136,8 @@ class NotifiableStringList implements List<String> {
 
   @override
   void setAll(int index, Iterable<String> iterable) {
-    RangeError.checkValidRange(index, index + iterable.length, length, "index", "index + iterable.length");
+    RangeError.checkValidRange(index, index + iterable.length, length, "index",
+        "index + iterable.length");
     _values.setAll(index, iterable);
     _notifyListener();
   }
@@ -167,7 +169,8 @@ class NotifiableStringList implements List<String> {
   }
 
   @override
-  NotifiableStringList operator +(List<String> other) => NotifiableStringList(_values + other, onValueChanged);
+  NotifiableStringList operator +(List<String> other) =>
+      NotifiableStringList(_values + other, onValueChanged);
 
   @override
   String operator [](int index) => _values[index];
@@ -182,7 +185,10 @@ class NotifiableStringList implements List<String> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || (other is NotifiableStringList && runtimeType == other.runtimeType && _values == other._values);
+      identical(this, other) ||
+      (other is NotifiableStringList &&
+          runtimeType == other.runtimeType &&
+          _values == other._values);
 
   @override
   int get hashCode => _values.join(",").hashCode;
@@ -206,28 +212,36 @@ class NotifiableStringList implements List<String> {
   bool every(bool Function(String element) test) => _values.every(test);
 
   @override
-  Iterable<T> expand<T>(Iterable<T> Function(String element) toElements) => _values.expand<T>(toElements);
+  Iterable<T> expand<T>(Iterable<T> Function(String element) toElements) =>
+      _values.expand<T>(toElements);
 
   @override
   String get first => _values.first;
 
   @override
-  String firstWhere(bool Function(String element) test, {String Function()? orElse}) => _values.firstWhere(test, orElse: orElse);
+  String firstWhere(bool Function(String element) test,
+          {String Function()? orElse}) =>
+      _values.firstWhere(test, orElse: orElse);
 
   @override
-  T fold<T>(T initialValue, T Function(T previousValue, String element) combine) => _values.fold<T>(initialValue, combine);
+  T fold<T>(T initialValue,
+          T Function(T previousValue, String element) combine) =>
+      _values.fold<T>(initialValue, combine);
 
   @override
-  Iterable<String> followedBy(Iterable<String> other) => _values.followedBy(other);
+  Iterable<String> followedBy(Iterable<String> other) =>
+      _values.followedBy(other);
 
   @override
   Iterable<String> getRange(int start, int end) => _values.getRange(start, end);
 
   @override
-  int indexOf(String element, [int start = 0]) => _values.indexOf(element, start);
+  int indexOf(String element, [int start = 0]) =>
+      _values.indexOf(element, start);
 
   @override
-  int indexWhere(bool Function(String element) test, [int start = 0]) => _values.indexWhere(test, start);
+  int indexWhere(bool Function(String element) test, [int start = 0]) =>
+      _values.indexWhere(test, start);
 
   @override
   bool get isEmpty => _values.isEmpty;
@@ -245,19 +259,25 @@ class NotifiableStringList implements List<String> {
   String get last => _values.last;
 
   @override
-  int lastIndexOf(String element, [int? start]) => _values.lastIndexOf(element, start);
+  int lastIndexOf(String element, [int? start]) =>
+      _values.lastIndexOf(element, start);
 
   @override
-  int lastIndexWhere(bool Function(String element) test, [int? start]) => _values.lastIndexWhere(test, start);
+  int lastIndexWhere(bool Function(String element) test, [int? start]) =>
+      _values.lastIndexWhere(test, start);
 
   @override
-  String lastWhere(bool Function(String element) test, {String Function()? orElse}) => _values.lastWhere(test, orElse: orElse);
+  String lastWhere(bool Function(String element) test,
+          {String Function()? orElse}) =>
+      _values.lastWhere(test, orElse: orElse);
 
   @override
-  Iterable<T> map<T>(T Function(String e) toElement) => _values.map<T>(toElement);
+  Iterable<T> map<T>(T Function(String e) toElement) =>
+      _values.map<T>(toElement);
 
   @override
-  String reduce(String Function(String value, String element) combine) => _values.reduce(combine);
+  String reduce(String Function(String value, String element) combine) =>
+      _values.reduce(combine);
 
   @override
   Iterable<String> get reversed => _values.reversed;
@@ -266,13 +286,16 @@ class NotifiableStringList implements List<String> {
   String get single => _values.single;
 
   @override
-  String singleWhere(bool Function(String element) test, {String Function()? orElse}) => _values.singleWhere(test, orElse: orElse);
+  String singleWhere(bool Function(String element) test,
+          {String Function()? orElse}) =>
+      _values.singleWhere(test, orElse: orElse);
 
   @override
   Iterable<String> skip(int count) => _values.skip(count);
 
   @override
-  Iterable<String> skipWhile(bool Function(String value) test) => _values.skipWhile(test);
+  Iterable<String> skipWhile(bool Function(String value) test) =>
+      _values.skipWhile(test);
 
   @override
   List<String> sublist(int start, [int? end]) => _values.sublist(start, end);
@@ -281,16 +304,19 @@ class NotifiableStringList implements List<String> {
   Iterable<String> take(int count) => _values.take(count);
 
   @override
-  Iterable<String> takeWhile(bool Function(String value) test) => _values.takeWhile(test);
+  Iterable<String> takeWhile(bool Function(String value) test) =>
+      _values.takeWhile(test);
 
   @override
-  List<String> toList({bool growable = true}) => _values.toList(growable: growable);
+  List<String> toList({bool growable = true}) =>
+      _values.toList(growable: growable);
 
   @override
   Set<String> toSet() => _values.toSet();
 
   @override
-  Iterable<String> where(bool Function(String element) test) => _values.where(test);
+  Iterable<String> where(bool Function(String element) test) =>
+      _values.where(test);
 
   @override
   Iterable<T> whereType<T>() => _values.whereType<T>();
