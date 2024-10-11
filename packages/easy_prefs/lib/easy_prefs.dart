@@ -1,5 +1,3 @@
-library easy_prefs;
-
 import 'dart:math';
 
 part 'utils/shared_preferences_helper.dart';

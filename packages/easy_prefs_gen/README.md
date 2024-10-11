@@ -161,7 +161,7 @@ class _$Settings with IEasyPrefs, ChangeNotifier {
 
   @override
   void initializeAll() {
-    final _tmp = _helper.onNotify;
+    final tmp = _helper.onNotify;
     _helper.onNotify = null;
 
     username = username;
@@ -173,7 +173,7 @@ class _$Settings with IEasyPrefs, ChangeNotifier {
     favs = favs;
     favs2 = favs2;
 
-    _helper.onNotify = _tmp;
+    _helper.onNotify = tmp;
     _helper.onNotify?.call("");
   }
 
@@ -287,7 +287,7 @@ class MyHomePage extends StatelessWidget {
                   value: settings.language,
                   items: LanguageCodes.values
                       .map((e) => DropdownMenuItem(
-                            child: Text(e.name, textScaleFactor: 1.2),
+                            child: Text(e.name, textScaler: TextScaler.linear(1.2)),
                             value: e,
                           ))
                       .toList(),
@@ -303,11 +303,11 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(16.0),
-                    child: Text("View Count: ", textScaleFactor: 1.2),
+                    child: Text("View Count: ", textScaler: TextScaler.linear(1.2)),
                   ),
                   const Spacer(),
                   IconButton(onPressed: () => settings.likeCount--, icon: const Icon(Icons.remove)),
-                  Text(settings.likeCount.toString(), textScaleFactor: 1.2),
+                  Text(settings.likeCount.toString(), textScaler: TextScaler.linear(1.2)),
                   IconButton(onPressed: () => settings.likeCount++, icon: const Icon(Icons.add)),
                 ],
               ),
@@ -316,7 +316,7 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(16.0),
-                    child: Text("Fav Items: ", textScaleFactor: 1.2),
+                    child: Text("Fav Items: ", textScaler: TextScaler.linear(1.2)),
                   ),
                   const Spacer(),
                   ElevatedButton(onPressed: () => settings.favs.removeLast(), child: const Icon(Icons.remove)),
@@ -327,7 +327,7 @@ class MyHomePage extends StatelessWidget {
               const Divider(height: 20),
               const Padding(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: Text("settings.toString() :", textScaleFactor: 1.1),
+                child: Text("settings.toString() :", textScaler: TextScaler.linear(1.1)),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),

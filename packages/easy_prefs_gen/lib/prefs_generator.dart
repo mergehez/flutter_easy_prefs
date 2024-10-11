@@ -29,12 +29,12 @@ class FieldInfo {
     if ((type.contains("List") && type.contains("String")) || (type == "List<dynamic>" && value.toListValue()?.isEmpty == true)) {
       type = "StringList";
       final list = (value.getField("values") ?? value).toListValue();
-      final valueStr = "[" + (list?.map((e) => "'${e.toStringValue()}'").join(",") ?? "") + "]";
+      final valueStr = "[${list?.map((e) => "'${e.toStringValue()}'").join(",") ?? ""}]";
       return FieldInfo(type, name, valueStr, false);
     }
 
     if (value.type?.element?.kind.displayName == "enum") {
-      return FieldInfo(type, name, type + "." + value.getField("_name")!.toStringValue()!, true);
+      return FieldInfo(type, name, "$type.${value.getField("_name")!.toStringValue()!}", true);
     }
 
     if (!_supportedTypes.contains(type)) {
@@ -84,12 +84,12 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
     strBuffer.write('''
       @override
       void initializeAll(){
-        final _tmp = _helper.onNotify;
+        final tmp = _helper.onNotify;
         _helper.onNotify = null;
 
         ${fields.map((e) => "${e.name} = ${e.name};").join("\n")}
 
-        _helper.onNotify = _tmp;
+        _helper.onNotify = tmp;
         _helper.onNotify?.call("");
       }
       
@@ -165,19 +165,19 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
       strBuffer.writeln("/// **IMPORTANT**: if possible set this to a variable and modify it through the variable!");
     }
 
-    final _prefHelper = onlyModifier ? "_\$$name ?? " : "";
-    final _suffHelper = onlyModifier ? ", (_) => _\$$name = val" : "";
+    final prefHelper = onlyModifier ? "_\$$name ?? " : "";
+    final suffHelper = onlyModifier ? ", (_) => _\$$name = val" : "";
 
     if (field.isEnum) {
-      strBuffer.writeln('$type get $name => $_prefHelper _helper.getEnum(_keys.$name, $type.values, $valueStr);');
-      strBuffer.writeln('set $name($type val) => _helper.setInt(_keys.$name, val.index $_suffHelper);');
+      strBuffer.writeln('$type get $name => $prefHelper _helper.getEnum(_keys.$name, $type.values, $valueStr);');
+      strBuffer.writeln('set $name($type val) => _helper.setInt(_keys.$name, val.index $suffHelper);');
     } else {
-      strBuffer.writeln('$type get $name => $_prefHelper _helper.get$typeFirstUpperCase(_keys.$name, $valueStr);');
-      strBuffer.writeln('set $name($type val) => _helper.set$typeFirstUpperCase(_keys.$name, val $_suffHelper);');
+      strBuffer.writeln('$type get $name => $prefHelper _helper.get$typeFirstUpperCase(_keys.$name, $valueStr);');
+      strBuffer.writeln('set $name($type val) => _helper.set$typeFirstUpperCase(_keys.$name, val $suffHelper);');
       if (type == "bool" && toggleMethodForBoolValues) {
         final nameFirstUpperCase = name[0].toUpperCase() + name.substring(1);
-        final _suffHelper2 = _suffHelper.replaceFirst("(_)", "(val)");
-        strBuffer.writeln('$type toggle$nameFirstUpperCase() => _helper.toggleBool(_keys.$name, $valueStr $_suffHelper2);');
+        final suffHelper2 = suffHelper.replaceFirst("(_)", "(val)");
+        strBuffer.writeln('$type toggle$nameFirstUpperCase() => _helper.toggleBool(_keys.$name, $valueStr $suffHelper2);');
       }
     }
 

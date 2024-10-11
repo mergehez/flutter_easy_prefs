@@ -1,4 +1,4 @@
-part of easy_prefs;
+part of '../easy_prefs.dart';
 
 class PrefsAnnotation {
   /// Keys of map are converted to properties. So they must be valid property names.

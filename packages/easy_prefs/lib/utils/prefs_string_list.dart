@@ -1,4 +1,4 @@
-part of easy_prefs;
+part of '../easy_prefs.dart';
 
 /// Class to define string list in [PrefsAnnotation]
 ///

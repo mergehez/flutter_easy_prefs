@@ -1,4 +1,4 @@
-part of easy_prefs;
+part of '../easy_prefs.dart';
 
 /// String list with notification on value changes
 class NotifiableStringList implements List<String> {
