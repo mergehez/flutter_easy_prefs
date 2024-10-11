@@ -48,10 +48,10 @@ Once you have added the annotations to your code you then need to run the code
 generator to generate the missing `.g.dart` generated dart files.
 
 ```bash
-	flutter pub run build_runner build
+	dart run build_runner build
 	
 	// or watch
-	flutter pub run build_runner watch
+	dart run build_runner watch
 ```
 
 ---
