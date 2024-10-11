@@ -110,7 +110,7 @@ class _PrefKeysForSettings {
   final String favs2 = 'favs2';
 }
 
-class _$Settings with IEasyPrefs, ChangeNotifier {
+class _$Settings extends IEasyPrefs with ChangeNotifier {
   final _helper = SharedPreferencesHelper();
   final _keys = const _PrefKeysForSettings();
 
