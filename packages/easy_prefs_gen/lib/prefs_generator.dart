@@ -87,7 +87,7 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
         annotation.read("toggleMethodForBoolValues").boolValue;
 
     strBuffer.writeln('''
-      class $newClassName with IEasyPrefs ${notifierEnabled ? ", ChangeNotifier" : ""}{
+      class $newClassName extends IEasyPrefs ${notifierEnabled ? "with ChangeNotifier" : ""}{
         final _helper = SharedPreferencesHelper();
         final _keys = const _PrefKeysFor$className();
         

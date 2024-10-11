@@ -13,3 +13,7 @@
 ## 0.0.4
 
 - No significant change
+
+## 0.0.5
+
+- No significant change
