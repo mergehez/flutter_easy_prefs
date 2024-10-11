@@ -1,6 +1,6 @@
 name: easy_prefs
 description: easy-to-use shared_preferences
-version: 0.0.1
+version: 0.0.3
 repository: https://github.com/mergehez/flutter_easy_prefs
 
 environment:
