@@ -21,3 +21,7 @@
 ## 0.0.6
 
 - Added async setter methods
+
+## 0.0.7
+
+- Fix: add return type (Future) for async setter methods
