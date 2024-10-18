@@ -25,3 +25,7 @@
 ## 0.0.7
 
 - Fix: add return type (Future) for async setter methods
+
+## 0.0.8
+
+- New: added "classToExtend" option

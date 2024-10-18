@@ -1,6 +1,6 @@
 name: easy_prefs
 description: easy-to-use shared_preferences with defining keys with their values. No need to write the type of the values.
-version: 0.0.7
+version: 0.0.8
 repository: https://github.com/mergehez/flutter_easy_prefs
 
 environment:
