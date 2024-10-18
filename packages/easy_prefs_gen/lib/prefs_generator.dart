@@ -207,13 +207,13 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
       strBuffer.writeln(
           '$type get $name => $prefHelper _helper.getEnum(_keys.$name, $type.values, $valueStr);');
       strBuffer.writeln(
-          '$setterName($type val) => _helper.setInt(_keys.$name, val.index $suffHelper);');
+          'Future $setterName($type val) => _helper.setInt(_keys.$name, val.index $suffHelper);');
       strBuffer.writeln('set $name($type val) => $setterName(val);');
     } else {
       strBuffer.writeln(
           '$type get $name => $prefHelper _helper.get$typeFirstUpperCase(_keys.$name, $valueStr);');
       strBuffer.writeln(
-          '$setterName($type val) => _helper.set$typeFirstUpperCase(_keys.$name, val $suffHelper);');
+          'Future $setterName($type val) => _helper.set$typeFirstUpperCase(_keys.$name, val $suffHelper);');
       strBuffer.writeln('set $name($type val) => $setterName(val);');
       if (type == "bool" && toggleMethodForBoolValues) {
         final nameFirstUpperCase = name[0].toUpperCase() + name.substring(1);
