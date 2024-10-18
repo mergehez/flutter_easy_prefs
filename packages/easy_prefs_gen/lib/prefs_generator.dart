@@ -34,8 +34,9 @@ class FieldInfo {
   }
 
   factory FieldInfo.fromMapEntry(MapEntry<DartObject?, DartObject?> e) {
-    if (e.value == null)
+    if (e.value == null) {
       throw UnsupportedError("'null' is not supported as value!");
+    }
 
     var type = e.value!.type.toString();
     var name = e.key!.toStringValue()!;
@@ -86,8 +87,10 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
     final toggleMethodForBoolValues =
         annotation.read("toggleMethodForBoolValues").boolValue;
 
+    final classToExtend = annotation.read("classToExtend").stringValue;
+    final extendsPart = classToExtend.isEmpty ? "" : "extends $classToExtend ";
     strBuffer.writeln('''
-      class $newClassName extends IEasyPrefs ${notifierEnabled ? "with ChangeNotifier" : ""}{
+      class $newClassName $extendsPart${notifierEnabled ? "with ChangeNotifier" : ""} implements IEasyPrefs{
         final _helper = SharedPreferencesHelper();
         final _keys = const _PrefKeysFor$className();
         

@@ -57,11 +57,20 @@ class PrefsAnnotation {
   /// ```
   final bool toggleMethodForBoolValues;
 
+  /// If you want to extend a class, you can provide the name of the class here.
+  ///
+  /// Example output if it is set to e.g. `MyBasePrefs`:
+  /// ```dart
+  /// class _$AppSettings extends MyBasePrefs implements IEasyPrefs with ChangeNotifier {
+  ///  ...
+  final String? classToExtend;
+
   const PrefsAnnotation(
     this.map, {
     this.changeNotifier = true,
     this.onlyModifier = true,
     this.providerExtensionMethods = false,
     this.toggleMethodForBoolValues = false,
+    this.classToExtend = '',
   });
 }
