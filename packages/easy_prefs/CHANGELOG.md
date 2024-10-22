@@ -29,3 +29,7 @@
 ## 0.0.8
 
 - New: added "classToExtend" option
+
+## 0.0.10
+
+- Changed "classToExtend" option to "baseClass"

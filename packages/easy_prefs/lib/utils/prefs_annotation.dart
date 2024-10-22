@@ -63,14 +63,14 @@ class PrefsAnnotation {
   /// ```dart
   /// class _$AppSettings extends MyBasePrefs implements IEasyPrefs with ChangeNotifier {
   ///  ...
-  final BaseClassDef? baseClass;
+  final String? baseClass;
 
   const PrefsAnnotation(
     this.map, {
     this.changeNotifier = true,
     this.onlyModifier = true,
-    this.providerExtensionMethods = false,
-    this.toggleMethodForBoolValues = false,
+    this.providerExtensionMethods = true,
+    this.toggleMethodForBoolValues = true,
     this.baseClass,
   });
 }
