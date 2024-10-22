@@ -99,12 +99,17 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
           if(silent) return;
           _helper.onNotify = onValueChanged;
         }
-        
+    ''');
+
+    if (notifierEnabled) {
+      strBuffer.writeln('''
+
         @override
         void onValueChanged(String key) {
-          ${notifierEnabled ? "notifyListeners();" : ""}
+          notifyListeners();
         }
-    ''');
+      ''');
+    }
 
     for (var e in fields) {
       generateGettersAndSetters(
