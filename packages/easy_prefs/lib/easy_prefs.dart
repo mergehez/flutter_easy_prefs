@@ -1,9 +1,11 @@
+import 'dart:ffi';
 import 'dart:math';
 
 part 'utils/shared_preferences_helper.dart';
 part "utils/prefs_string_list.dart";
 part "utils/notifiable_string_list.dart";
 part "utils/prefs_annotation.dart";
+part "utils/base_class_def.dart";
 
 class EasyPrefs {
   /// Ensure that you've added the dependency ***shared_preferences*** to your project:
