@@ -1,6 +1,6 @@
 name: easy_prefs_gen
 description: Code Generation for shared_preferences with defining keys with their values. No need to write the type of the values.
-version: 0.0.8
+version: 0.0.11
 repository: https://github.com/mergehez/flutter_easy_prefs
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   analyzer: ^5.13.0
   build: ^2.2.1
-  easy_prefs: ^0.0.8
+  easy_prefs: ^0.0.10
   source_gen: ^1.2.1
 
 dev_dependencies:

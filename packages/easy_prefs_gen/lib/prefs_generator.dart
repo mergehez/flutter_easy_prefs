@@ -92,7 +92,7 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
     strBuffer.writeln('''
       class $newClassName $extendsPart${notifierEnabled ? "with ChangeNotifier" : ""} implements IEasyPrefs{
         final _helper = SharedPreferencesHelper();
-        final _keys = const _PrefKeysFor$className();
+        final _keys = const _Keys();
         
         /// if [silent] is true, value changes won't be notified.
         $newClassName({bool silent = false}) {
@@ -147,10 +147,10 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
 
   void generatePrefKeysClass(
       StringBuffer strBuffer, String className, List<FieldInfo> fields) {
-    strBuffer.writeln('class _PrefKeysFor$className {');
-    strBuffer.writeln(' const _PrefKeysFor$className();');
+    strBuffer.writeln('class _Keys {');
+    strBuffer.writeln(' const _Keys();');
     for (final field in fields) {
-      strBuffer.writeln("final String ${field.name} = '${field.name}';");
+      strBuffer.writeln("static const String ${field.name} = '${field.name}';");
     }
     strBuffer.writeln('}');
     strBuffer.writeln();
