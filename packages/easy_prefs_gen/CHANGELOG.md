@@ -33,3 +33,7 @@
 ## 0.0.10
 
 - Fix notifyListeners not being called when "classToExtend" is defined
+
+## 0.0.11
+
+- Quickfix: make keys static const instead of final

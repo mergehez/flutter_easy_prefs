@@ -33,3 +33,7 @@
 ## 0.0.10
 
 - Revert last version
+
+## 0.0.11
+
+- Quickfix: make keys static const instead of final
