@@ -34,6 +34,6 @@
 
 - Changed "classToExtend" option to "baseClass"
 
-## 0.0.11
+## 0.0.12
 
-- Quickfix: make keys static const instead of final
+- Quickfix: make keys "static const" instead of "final"

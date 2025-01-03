@@ -92,7 +92,6 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
     strBuffer.writeln('''
       class $newClassName $extendsPart${notifierEnabled ? "with ChangeNotifier" : ""} implements IEasyPrefs{
         final _helper = SharedPreferencesHelper();
-        final _keys = const _Keys();
         
         /// if [silent] is true, value changes won't be notified.
         $newClassName({bool silent = false}) {
@@ -130,7 +129,7 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
       
       @override
       bool isTouched(){
-        return ${fields.map((e) => "_helper.hasKey(_keys.${e.name})").join("\n  || ")};
+        return ${fields.map((e) => "_helper.hasKey(_Keys.${e.name})").join("\n  || ")};
       }
     ''');
 
@@ -148,7 +147,6 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
   void generatePrefKeysClass(
       StringBuffer strBuffer, String className, List<FieldInfo> fields) {
     strBuffer.writeln('class _Keys {');
-    strBuffer.writeln(' const _Keys();');
     for (final field in fields) {
       strBuffer.writeln("static const String ${field.name} = '${field.name}';");
     }
@@ -213,21 +211,21 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
 
     if (field.isEnum) {
       strBuffer.writeln(
-          '$type get $name => $prefHelper _helper.getEnum(_keys.$name, $type.values, $valueStr);');
+          '$type get $name => $prefHelper _helper.getEnum(_Keys.$name, $type.values, $valueStr);');
       strBuffer.writeln(
-          'Future $setterName($type val) => _helper.setInt(_keys.$name, val.index $suffHelper);');
+          'Future $setterName($type val) => _helper.setInt(_Keys.$name, val.index $suffHelper);');
       strBuffer.writeln('set $name($type val) => $setterName(val);');
     } else {
       strBuffer.writeln(
-          '$type get $name => $prefHelper _helper.get$typeFirstUpperCase(_keys.$name, $valueStr);');
+          '$type get $name => $prefHelper _helper.get$typeFirstUpperCase(_Keys.$name, $valueStr);');
       strBuffer.writeln(
-          'Future $setterName($type val) => _helper.set$typeFirstUpperCase(_keys.$name, val $suffHelper);');
+          'Future $setterName($type val) => _helper.set$typeFirstUpperCase(_Keys.$name, val $suffHelper);');
       strBuffer.writeln('set $name($type val) => $setterName(val);');
       if (type == "bool" && toggleMethodForBoolValues) {
         final nameFirstUpperCase = name[0].toUpperCase() + name.substring(1);
         final suffHelper2 = suffHelper.replaceFirst("(_)", "(val)");
         strBuffer.writeln(
-            '$type toggle$nameFirstUpperCase() => _helper.toggleBool(_keys.$name, $valueStr $suffHelper2);');
+            '$type toggle$nameFirstUpperCase() => _helper.toggleBool(_Keys.$name, $valueStr $suffHelper2);');
       }
     }
 

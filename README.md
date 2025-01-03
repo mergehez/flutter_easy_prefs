@@ -98,21 +98,21 @@ part of 'example.dart';
 // PrefsGenerator
 // **************************************************************************
 
-class _PrefKeysForSettings {
-  const _PrefKeysForSettings();
-  final String username = 'username';
-  final String notification = 'notification';
-  final String notificationSound = 'notificationSound';
-  final String exchangeRate = 'exchangeRate';
-  final String language = 'language';
-  final String likeCount = 'likeCount';
-  final String favs = 'favs';
-  final String favs2 = 'favs2';
+class _Keys {
+  const _Keys();
+  static const String username = 'username';
+  static const String notification = 'notification';
+  static const String notificationSound = 'notificationSound';
+  static const String exchangeRate = 'exchangeRate';
+  static const String language = 'language';
+  static const String likeCount = 'likeCount';
+  static const String favs = 'favs';
+  static const String favs2 = 'favs2';
 }
 
 class _$Settings extends IEasyPrefs with ChangeNotifier {
   final _helper = SharedPreferencesHelper();
-  final _keys = const _PrefKeysForSettings();
+  final _keys = const _Keys();
 
   /// if [silent] is true, value changes won't be notified.
   _$Settings({bool silent = false}) {
