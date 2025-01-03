@@ -29,3 +29,7 @@
 ## 0.0.8
 
 - New: added "classToExtend" option
+
+## 0.0.10
+
+- Fix notifyListeners not being called when "classToExtend" is defined
