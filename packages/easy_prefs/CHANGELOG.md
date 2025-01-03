@@ -37,3 +37,7 @@
 ## 0.0.12
 
 - Quickfix: make keys "static const" instead of "final"
+
+## 0.0.13
+
+- Quickfix in parsing PrefsAnnotation

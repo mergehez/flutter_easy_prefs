@@ -82,13 +82,16 @@ class PrefsGenerator extends GeneratorForAnnotation<PrefsAnnotation> {
 
     generatePrefKeysClass(strBuffer, className, fields);
 
-    final notifierEnabled = annotation.read("changeNotifier").boolValue;
-    final onlyModifier = annotation.read("onlyModifier").boolValue;
+    final notifierEnabled =
+        annotation.peek("changeNotifier")?.boolValue ?? false;
+    final onlyModifier = annotation.peek("onlyModifier")?.boolValue ?? false;
     final toggleMethodForBoolValues =
-        annotation.read("toggleMethodForBoolValues").boolValue;
+        annotation.peek("toggleMethodForBoolValues")?.boolValue ?? true;
 
-    final classToExtend = annotation.read("classToExtend").stringValue;
-    final extendsPart = classToExtend.isEmpty ? "" : "extends $classToExtend ";
+    final classToExtend = annotation.peek("classToExtend")?.stringValue;
+    final extendsPart = classToExtend == null || classToExtend.isEmpty
+        ? ""
+        : "extends $classToExtend ";
     strBuffer.writeln('''
       class $newClassName $extendsPart${notifierEnabled ? "with ChangeNotifier" : ""} implements IEasyPrefs{
         final _helper = SharedPreferencesHelper();
